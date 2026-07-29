@@ -7,10 +7,9 @@
     --warm-ivory: #F8F0E7;   /* page background */
     --white: #FFFFFF;        /* cards, text on dark colors */
 }
-*{
+/* *{
     box-sizing: border-box;
-}
-
+} */
 
 header{
     position: sticky; top: 0; z-index: 50;
@@ -37,6 +36,17 @@ nav a{
     gap: 24px;
 }
 
+h1{
+    text-align: center;
+}
+
+.store-photo{
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
 
 body{
     margin: 0;
@@ -71,4 +81,21 @@ img{
     padding: 56px;
     border-top: 1px solid var(--clay);
     border-bottom: 1px solid var(--clay);
+}
+.map-box{
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid var(--dark-brick);
+}
+.map-box iframe{
+    width: 100%;
+    height: 300px;
+    display: block;
+    border: 0;
+}
+.location{
+    text-align: center;
+    scroll-margin-top: 80px;
 }
