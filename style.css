@@ -40,14 +40,6 @@ h1{
     text-align: center;
 }
 
-/* .store-photo{
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-} */
-
 body{
     margin: 0;
     background-color: var(--warm-ivory);
@@ -98,4 +90,30 @@ img{
 .location{
     text-align: center;
     scroll-margin-top: 80px;
+}
+
+/* for products page */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background: var(--white);
+    border: 1px solid var(--clay);
+    border-radius: 10px;
+    padding: 20px 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.product-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
 }
