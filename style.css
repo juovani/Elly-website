@@ -17,6 +17,19 @@ header{
     backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(244,236,216,.08);
 }
+footer{
+    padding: 15px;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+}
+footer h3{
+    margin-top: 0%;
+}
+.phone-link{
+    text-decoration: none;
+    color: var(--mahogany);
+}
 
 nav{
     display: flex; 
@@ -71,8 +84,8 @@ img{
 .storefront{
     background: var(--white);
     padding: 56px;
-    border-top: 1px solid var(--clay);
-    border-bottom: 1px solid var(--clay);
+    border-top: 2px solid var(--clay);
+    border-bottom: 2px solid var(--clay);
 }
 .map-box{
     max-width: 500px;
@@ -90,6 +103,8 @@ img{
 .location{
     text-align: center;
     scroll-margin-top: 80px;
+    border-bottom: 2px solid var(--clay);
+    padding-bottom: 30px;
 }
 
 /* for products page */

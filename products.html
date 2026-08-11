@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products — Elly Convenience</title>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="Elly Logo/favicon-32.png">
     <link rel="apple-touch-icon" href="Elly Logo/apple-touch-icon.png">
@@ -21,7 +19,7 @@
                 <a href="index.html">Home</a>
                 <a href="products.html">Products</a>
                 <a href="index.html#location">Location</a>
-                <a href="#">Cart</a>
+                <a href="cart.html">Cart</a>
             </div>
         </nav>
     </header>
@@ -30,40 +28,15 @@
         <h1>What We Carry</h1>
 
         <h2>Egyptian Groceries</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="Products/El_Arosa_Tea.jpeg" alt="El Arosa Tea">
-                <div>
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
-                </div>
-            </div>
-            <div class="product-card">Halva</div>
-            <div class="product-card">Tahini</div>
-            <div class="product-card">Egyptian Rice</div>
-        </div>
+        <div class="product-grid" id="grid-groceries"></div>
 
         <h2>Snacks &amp; Sweets</h2>
-        <div class="product-grid">
-            <div class="product-card">Katakito Wafers</div>
-            <div class="product-card">Molto Croissants</div>
-            <div class="product-card">Chipsy</div>
-        </div>
+        <div class="product-grid" id="grid-snacks"></div>
 
         <h2>Smoke Shop</h2>
-        <div class="product-grid">
-            <div class="product-card">Cigarettes</div>
-            <div class="product-card">Hookah Tobacco</div>
-            <div class="product-card">Accessories</div>
-        </div>
+        <div class="product-grid" id="grid-smoke"></div>
     </main>
 
-    <!-- <footer>
-        <div class="wrap">
-            <p><strong>Elly Convenience &amp; Smoke Shop</strong></p>
-            <p>(774) 340-5102<br>185 Pleasant St, Attleboro, MA 02703</p>
-        </div>
-    </footer> -->
+    <script src="index.js"></script>
 </body>
 </html>
