@@ -132,3 +132,47 @@ img{
     border-radius: 6px;
     margin-bottom: 12px;
 }
+.add-to-cart{
+    background: var(--brick);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+}
+.add-to-cart:hover{
+    background: var(--dark-brick);
+}
+.product-name{
+    font-size: 20px;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 10px;
+}
+.count{
+    display: inline-block;
+    width: 24px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.add-btn,
+.sub-btn {
+    background: var(--brick);
+    color: var(--white);
+    border: none;
+    width: 28px;
+    height: 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.add-btn:hover,
+.sub-btn:hover{
+    background: var(--dark-brick);
+}

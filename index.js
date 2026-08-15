@@ -19,13 +19,14 @@ products.forEach((product) => {
 
     grid.innerHTML += `
         <div class="product-card">
+            <p class="product-name">${product.name}</p>
             <img src="${product.img}" alt="${product.name}">
-            <p>${product.name}</p>
-            <div>
+            <div class="buttons">
                 <button class="sub-btn">-</button>
                 <span class="count">0</span>
                 <button class="add-btn">+</button>
             </div>
+            <button class="add-to-cart">Add to cart</button>
         </div>
     `;
 });
@@ -35,6 +36,7 @@ const cards = document.querySelectorAll('.product-card');
 
 cards.forEach((card) => {
     let count = 0;
+
 
     const addBtn = card.querySelector('.add-btn');
     const subBtn = card.querySelector('.sub-btn');
