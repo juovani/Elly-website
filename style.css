@@ -11,10 +11,32 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+.menu-btn{
+    display: none;
+    background: none;
+    border: none;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.menu-btn span{
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 2px;
+}
+
+/* @media (max-width: 600px) {
     nav {
         flex-wrap: wrap;
         row-gap: 10px;
+    }
+    .menu-btn{
+        display: flex;
     }
 
     .brand {
@@ -22,12 +44,16 @@
     }
 
     .nav-links {
+        display: none;
         width: 100%;
         justify-content: center;
         gap: 16px;
         font-size: 0.85rem;
     }
-}
+    .nav-links.open{
+        display: flex;
+    }
+} */
 
 
 header{
@@ -195,4 +221,28 @@ img{
 .add-btn:hover,
 .sub-btn:hover{
     background: var(--dark-brick);
+}
+@media (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    .menu-btn{
+        display: flex;
+    }
+
+    .brand {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+        font-size: 0.85rem;
+    }
+    .nav-links.open{
+        display: flex;
+    }
 }
