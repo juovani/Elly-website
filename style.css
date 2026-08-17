@@ -198,22 +198,32 @@ img{
 
 @media (max-width: 600px) {
     nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
         flex-wrap: wrap;
         row-gap: 12px;
+        /* margin: 0 -24px;
+        padding: 16px 24px; */
     }
     .menu-btn{
         display: flex;
+        padding-right: 24px;
     }
 
     .brand {
         font-size: 1.1rem;
+        padding-left: 24px;
     }
 
     .nav-links {
         display: none;
         width: 100%;
+        padding: 16px 24px;
+        margin-bottom: -16px;
         justify-content: center;
-        gap: 0;
+        gap: 10px;
         flex-direction: column;
         border-top: 2px solid var(--dark-brick);
     }
