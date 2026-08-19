@@ -1,8 +1,23 @@
+function getCart() {
+    const data = localStorage.getItem('cart');
+    return data ? JSON.parse(data) : [];
+}
+
+// function addToCart(name){
+//     const cart = getCart();
+//     const existingItem = cart.find(item => item.name === name);
+
+//     if(existingItem){
+//         existingItem.q
+//     }
+// }
+
+
 const groceriesGrid = document.getElementById('grid-groceries');
 
 if(groceriesGrid){
     const products = [
-        { name: 'El Arosa Tea', img: 'Products/El_Arosa_Tea.jpeg', category: 'grid-groceries' },
+        { name: 'El Arosa Tea', img: 'Products/El_Arosa_Tea.jpeg', category: 'grid-groceries'},
         { name: 'Egyptian Rice', img: 'Products/Rise_Egyptian.jpeg', category: 'grid-snacks' },
         { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
         { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
