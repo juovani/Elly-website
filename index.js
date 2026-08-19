@@ -12,7 +12,8 @@ function updateCart(name, change){
     } else if(change > 0){
         cart.push({name: name, qty: change });
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    const filteredCart = cart.filter(item => item.qty > 0);
+    localStorage.setItem('cart', JSON.stringify(filteredCart));
 }
 
 
@@ -22,16 +23,16 @@ if(groceriesGrid){
     const products = [
         { name: 'El Arosa Tea', img: 'Products/El_Arosa_Tea.jpeg', category: 'grid-groceries'},
         { name: 'Egyptian Rice', img: 'Products/Rise_Egyptian.jpeg', category: 'grid-snacks' },
-        // { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
-        // { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
+        { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
+        { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
 
-        // { name: 'Katakito Wafers', img: 'Products/katakito-wafers.jpg', category: 'grid-snacks' },
-        // { name: 'Molto Croissants', img: 'Products/molto-croissants.jpg', category: 'grid-snacks' },
-        // { name: 'Chipsy', img: 'Products/chipsy.jpg', category: 'grid-snacks' },
+        { name: 'Katakito Wafers', img: 'Products/katakito-wafers.jpg', category: 'grid-snacks' },
+        { name: 'Molto Croissants', img: 'Products/molto-croissants.jpg', category: 'grid-snacks' },
+        { name: 'Chipsy', img: 'Products/chipsy.jpg', category: 'grid-snacks' },
 
-        // { name: 'Cigarettes', img: 'Products/cigarettes.jpg', category: 'grid-smoke' },
-        // { name: 'Hookah Tobacco', img: 'Products/hookah-tobacco.jpg', category: 'grid-smoke' },
-        // { name: 'Accessories', img: 'Products/accessories.jpg', category: 'grid-smoke' },
+        { name: 'Cigarettes', img: 'Products/cigarettes.jpg', category: 'grid-smoke' },
+        { name: 'Hookah Tobacco', img: 'Products/hookah-tobacco.jpg', category: 'grid-smoke' },
+        { name: 'Accessories', img: 'Products/accessories.jpg', category: 'grid-smoke' },
     ];
 
     // 1. Build every card's HTML and drop it into its category grid
@@ -56,14 +57,23 @@ if(groceriesGrid){
     const cards = document.querySelectorAll('.product-card');
 
     cards.forEach((card) => {
-        let count = 0;
-
-
         const addBtn = card.querySelector('.add-btn');
         const subBtn = card.querySelector('.sub-btn');
 
         const countDisplay = card.querySelector('.count');
         const productName = card.querySelector('.product-name').textContent;
+
+        const cart = getCart();
+        const existingItem = cart.find(item => item.name === productName);
+        let count;
+
+        if(existingItem){
+            count = existingItem.qty;
+            countDisplay.textContent = count;
+        } else{
+            count = 0;
+        }
+        
 
         addBtn.addEventListener('click', () => {
             count++;
