@@ -3,14 +3,17 @@ function getCart() {
     return data ? JSON.parse(data) : [];
 }
 
-// function addToCart(name){
-//     const cart = getCart();
-//     const existingItem = cart.find(item => item.name === name);
+function updateCart(name, change){
+    const cart = getCart();
+    const existingItem = cart.find(item => item.name === name);
 
-//     if(existingItem){
-//         existingItem.q
-//     }
-// }
+    if(existingItem){
+        existingItem.qty += change;
+    } else if(change > 0){
+        cart.push({name: name, qty: change });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 
 const groceriesGrid = document.getElementById('grid-groceries');
@@ -19,16 +22,16 @@ if(groceriesGrid){
     const products = [
         { name: 'El Arosa Tea', img: 'Products/El_Arosa_Tea.jpeg', category: 'grid-groceries'},
         { name: 'Egyptian Rice', img: 'Products/Rise_Egyptian.jpeg', category: 'grid-snacks' },
-        { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
-        { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
+        // { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
+        // { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
 
-        { name: 'Katakito Wafers', img: 'Products/katakito-wafers.jpg', category: 'grid-snacks' },
-        { name: 'Molto Croissants', img: 'Products/molto-croissants.jpg', category: 'grid-snacks' },
-        { name: 'Chipsy', img: 'Products/chipsy.jpg', category: 'grid-snacks' },
+        // { name: 'Katakito Wafers', img: 'Products/katakito-wafers.jpg', category: 'grid-snacks' },
+        // { name: 'Molto Croissants', img: 'Products/molto-croissants.jpg', category: 'grid-snacks' },
+        // { name: 'Chipsy', img: 'Products/chipsy.jpg', category: 'grid-snacks' },
 
-        { name: 'Cigarettes', img: 'Products/cigarettes.jpg', category: 'grid-smoke' },
-        { name: 'Hookah Tobacco', img: 'Products/hookah-tobacco.jpg', category: 'grid-smoke' },
-        { name: 'Accessories', img: 'Products/accessories.jpg', category: 'grid-smoke' },
+        // { name: 'Cigarettes', img: 'Products/cigarettes.jpg', category: 'grid-smoke' },
+        // { name: 'Hookah Tobacco', img: 'Products/hookah-tobacco.jpg', category: 'grid-smoke' },
+        // { name: 'Accessories', img: 'Products/accessories.jpg', category: 'grid-smoke' },
     ];
 
     // 1. Build every card's HTML and drop it into its category grid
@@ -60,16 +63,19 @@ if(groceriesGrid){
         const subBtn = card.querySelector('.sub-btn');
 
         const countDisplay = card.querySelector('.count');
+        const productName = card.querySelector('.product-name').textContent;
 
         addBtn.addEventListener('click', () => {
             count++;
             countDisplay.textContent = count;
+            updateCart(productName, 1);
         });
         
         subBtn.addEventListener('click', () => {
             if(count > 0){
                 count--;
                 countDisplay.textContent = count;
+                updateCart(productName, -1);
             }
         });
     });
