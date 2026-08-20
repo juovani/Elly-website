@@ -70,7 +70,21 @@ nav a{
 h1{
     text-align: center;
 }
-
+.sticky-footer-page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.sticky-footer-page main{
+    flex: 1;
+}
+#cart-main{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 body{
     margin: 0;
     background-color: var(--warm-ivory);

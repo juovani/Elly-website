@@ -96,3 +96,16 @@ const navLinks = document.querySelector(".nav-links");
 menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('open');
 })
+
+const cartMain = document.getElementById('cart-main');
+
+if(cartMain){
+    const cart = getCart();
+
+    if(cart.length === 0){
+        cartMain.innerHTML = 'Cart Is Empty';
+    } 
+    // else{
+
+    // }
+}
