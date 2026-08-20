@@ -3,14 +3,14 @@ function getCart() {
     return data ? JSON.parse(data) : [];
 }
 
-function updateCart(name, change){
+function updateCart(name, change, image){
     const cart = getCart();
     const existingItem = cart.find(item => item.name === name);
 
     if(existingItem){
         existingItem.qty += change;
     } else if(change > 0){
-        cart.push({name: name, qty: change });
+        cart.push({name: name, qty: change, img: image });
     }
     const filteredCart = cart.filter(item => item.qty > 0);
     localStorage.setItem('cart', JSON.stringify(filteredCart));
@@ -62,6 +62,7 @@ if(groceriesGrid){
 
         const countDisplay = card.querySelector('.count');
         const productName = card.querySelector('.product-name').textContent;
+        const productImage = card.querySelector('img').getAttribute('src');
 
         const cart = getCart();
         const existingItem = cart.find(item => item.name === productName);
@@ -78,14 +79,14 @@ if(groceriesGrid){
         addBtn.addEventListener('click', () => {
             count++;
             countDisplay.textContent = count;
-            updateCart(productName, 1);
+            updateCart(productName, 1, productImage);
         });
         
         subBtn.addEventListener('click', () => {
             if(count > 0){
                 count--;
                 countDisplay.textContent = count;
-                updateCart(productName, -1);
+                updateCart(productName, -1, productImage);
             }
         });
     });
@@ -104,8 +105,16 @@ if(cartMain){
 
     if(cart.length === 0){
         cartMain.innerHTML = 'Cart Is Empty';
-    } 
-    // else{
-
-    // }
+    } else{
+        cart.forEach(item => {
+            cartMain.innerHTML += `
+                <div class="cart-item">
+                    <p>${item.name}</p>
+                    <img src="${item.img}" alt="${item.name}">
+                    <p>Qty: ${item.qty}</p>
+                </div>
+            `;
+                
+        });
+    }
 }
