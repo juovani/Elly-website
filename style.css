@@ -78,13 +78,25 @@ h1{
 .sticky-footer-page main{
     flex: 1;
 }
-#cart-main{
+/* #cart-main{
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
+    min-height: 50vh;
+} */
+.empty-cart{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    /* padding: 80px 20px; */
 }
+
+
 body{
     margin: 0;
     background-color: var(--warm-ivory);

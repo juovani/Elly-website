@@ -104,7 +104,14 @@ if(cartMain){
     const cart = getCart();
 
     if(cart.length === 0){
-        cartMain.innerHTML = 'Cart Is Empty';
+        // cartMain.innerHTML = 'Cart Is Empty';
+        cartMain.innerHTML = `
+            <div class="empty-cart">
+                <h4>Your cart is empty</h4>
+                <p>Browse our products and add something you'd like.</p>
+                <a href="products.html" class="add-to-cart">Browse Products</a>
+            </div>
+        `;
     } else{
         cart.forEach(item => {
             cartMain.innerHTML += `
