@@ -33,7 +33,6 @@ if(groceriesGrid){
                     <span class="count">0</span>
                     <button class="add-btn">+</button>
                 </div>
-                <button class="add-to-cart">Add to cart</button>
             </div>
         `;
     });
@@ -42,38 +41,21 @@ if(groceriesGrid){
     const cards = document.querySelectorAll('.product-card');
 
     cards.forEach((card) => {
-        const addBtn = card.querySelector('.add-btn');
-        const subBtn = card.querySelector('.sub-btn');
+            const addBtn = card.querySelector('.add-btn');
+            const subBtn = card.querySelector('.sub-btn');
+            const countDisplay = card.querySelector('.count');
+            const productName = card.querySelector('.product-name').textContent;
+            const productImage = card.querySelector('img').getAttribute('src');
 
-        const countDisplay = card.querySelector('.count');
-        const productName = card.querySelector('.product-name').textContent;
-        const productImage = card.querySelector('img').getAttribute('src');
+            addBtn.addEventListener('click', () => {
+                updateCart(productName, 1, productImage);
+                refreshCartUI();
+            });
 
-        const cart = getCart();
-        const existingItem = cart.find(item => item.name === productName);
-        let count;
-
-        if(existingItem){
-            count = existingItem.qty;
-            countDisplay.textContent = count;
-        } else{
-            count = 0;
-        }
-        
-
-        addBtn.addEventListener('click', () => {
-            count++;
-            countDisplay.textContent = count;
-            updateCart(productName, 1, productImage);
-        });
-        
-        subBtn.addEventListener('click', () => {
-            if(count > 0){
-                count--;
-                countDisplay.textContent = count;
+            subBtn.addEventListener('click', () => {
                 updateCart(productName, -1, productImage);
-            }
-        });
+                refreshCartUI();
+            });
     });
 }
 
@@ -91,6 +73,10 @@ cartToggle.addEventListener('click', () => {
     cartDrawer.classList.toggle('open');
     cartOverlay.classList.toggle('open');
 });
+cartOverlay.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+});8
 
 const closeCart = document.getElementById('closeCart');
 closeCart.addEventListener('click', () => {
@@ -101,6 +87,11 @@ closeCart.addEventListener('click', () => {
 function renderCart(){
     const cart = getCart();
     const cartBody = document.getElementById('cartBody');
+    const cartCount = document.getElementById('cartCount');
+
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    cartCount.textContent = totalItems;
+
     cartBody.innerHTML = '';
     if(cart.length === 0){
         cartBody.innerHTML += `
@@ -109,10 +100,49 @@ function renderCart(){
     } else{
         cart.forEach(item => {
             cartBody.innerHTML += `
-                <p>${item.name}</p>
-                <img src="${item.img}" alt="${item.name}">
-                <p>Qty: ${item.qty}</p>
+                <div class="drawer-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="drawer-item-info">
+                        <p class="drawer-item-name">${item.name}</p>
+                        <div class="buttons">
+                            <button class="sub-btn" data-name="${item.name}" data-img="${item.img}">-</button>
+                            <span class="count">${item.qty}</span>
+                            <button class="add-btn" data-name="${item.name}" data-img="${item.img}">+</button>
+                        </div>
+                    </div>
+                </div>
             `;
+        });
+        const subBtns = cartBody.querySelectorAll('.sub-btn');
+        const addBtns = cartBody.querySelectorAll('.add-btn');
+
+        subBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateCart(btn.dataset.name, -1, btn.dataset.img);
+                refreshCartUI();
+            });
+        });
+
+        addBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateCart(btn.dataset.name, 1, btn.dataset.img);
+                refreshCartUI();
+            });
         });
     }
 }
+function refreshCartUI() {
+    const cart = getCart();
+    const cards = document.querySelectorAll('.product-card');
+
+    cards.forEach(card => {
+        const countDisplay = card.querySelector('.count');
+        const productName = card.querySelector('.product-name').textContent;
+        const existingItem = cart.find(item => item.name === productName);
+        countDisplay.textContent = existingItem ? existingItem.qty : 0;
+    });
+
+    renderCart();
+}
+
+refreshCartUI();
