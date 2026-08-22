@@ -15,16 +15,21 @@
                 <img src="Elly Logo/elly-icon-eye-light.png" alt="" class="brand-logo">
                 Elly Convenience
             </a>
-            <button class="menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-links">
+
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="products.html">Products</a>
-                <a href="index.html#location">Location</a>
-                <a href="cart.html">Cart</a>
+                <a href="index.html#location">Visit Us</a>
+            </div>
+            
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle">AR</button>
+                <button class="cart-toggle" id="cartToggle">Cart <span id="cartCount">0</span></button>
+                <button class="menu-btn" id="menuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -52,6 +57,15 @@
             <a href="tel:+17743405102" class="phone-link">(774) 340-5102</a>
         </div>
     </footer>
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header" id="cartHeader">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+    </aside>
+    <script src="products.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

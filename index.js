@@ -20,21 +20,6 @@ function updateCart(name, change, image){
 const groceriesGrid = document.getElementById('grid-groceries');
 
 if(groceriesGrid){
-    const products = [
-        { name: 'El Arosa Tea', img: 'Products/El_Arosa_Tea.jpeg', category: 'grid-groceries'},
-        { name: 'Egyptian Rice', img: 'Products/Rise_Egyptian.jpeg', category: 'grid-snacks' },
-        { name: 'Halva', img: 'Products/halva.jpg', category: 'grid-groceries' },
-        { name: 'Tahini', img: 'Products/tahini.jpg', category: 'grid-groceries' },
-
-        { name: 'Katakito Wafers', img: 'Products/katakito-wafers.jpg', category: 'grid-snacks' },
-        { name: 'Molto Croissants', img: 'Products/molto-croissants.jpg', category: 'grid-snacks' },
-        { name: 'Chipsy', img: 'Products/chipsy.jpg', category: 'grid-snacks' },
-
-        { name: 'Cigarettes', img: 'Products/cigarettes.jpg', category: 'grid-smoke' },
-        { name: 'Hookah Tobacco', img: 'Products/hookah-tobacco.jpg', category: 'grid-smoke' },
-        { name: 'Accessories', img: 'Products/accessories.jpg', category: 'grid-smoke' },
-    ];
-
     // 1. Build every card's HTML and drop it into its category grid
     products.forEach((product) => {
         const grid = document.getElementById(product.category);
@@ -98,30 +83,36 @@ menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('open');
 })
 
-const cartMain = document.getElementById('cart-main');
+const cartToggle = document.getElementById('cartToggle');
+const cartDrawer = document.getElementById('cartDrawer');
+const cartOverlay = document.getElementById('cartOverlay');
+cartToggle.addEventListener('click', () => {
+    renderCart();
+    cartDrawer.classList.toggle('open');
+    cartOverlay.classList.toggle('open');
+});
 
-if(cartMain){
+const closeCart = document.getElementById('closeCart');
+closeCart.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+});
+
+function renderCart(){
     const cart = getCart();
-
+    const cartBody = document.getElementById('cartBody');
+    cartBody.innerHTML = '';
     if(cart.length === 0){
-        // cartMain.innerHTML = 'Cart Is Empty';
-        cartMain.innerHTML = `
-            <div class="empty-cart">
-                <h4>Your cart is empty</h4>
-                <p>Browse our products and add something you'd like.</p>
-                <a href="products.html" class="add-to-cart">Browse Products</a>
-            </div>
+        cartBody.innerHTML += `
+            <h4>Cart Is Empty</h4>
         `;
     } else{
         cart.forEach(item => {
-            cartMain.innerHTML += `
-                <div class="cart-item">
-                    <p>${item.name}</p>
-                    <img src="${item.img}" alt="${item.name}">
-                    <p>Qty: ${item.qty}</p>
-                </div>
+            cartBody.innerHTML += `
+                <p>${item.name}</p>
+                <img src="${item.img}" alt="${item.name}">
+                <p>Qty: ${item.qty}</p>
             `;
-                
         });
     }
 }
