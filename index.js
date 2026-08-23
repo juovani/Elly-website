@@ -43,7 +43,7 @@ if(groceriesGrid){
     cards.forEach((card) => {
             const addBtn = card.querySelector('.add-btn');
             const subBtn = card.querySelector('.sub-btn');
-            const countDisplay = card.querySelector('.count');
+            // const countDisplay = card.querySelector('.count');
             const productName = card.querySelector('.product-name').textContent;
             const productImage = card.querySelector('img').getAttribute('src');
 

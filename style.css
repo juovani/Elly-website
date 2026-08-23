@@ -7,6 +7,14 @@
     --clay: #E2A181;         /* tags, soft highlight backgrounds */
     --warm-ivory: #F8F0E7;   /* page background */
     --white: #FFFFFF;        /* cards, text on dark colors */
+
+    --font-display: 'Marcellus', 'Cairo', serif;
+    --font-body:    'Public Sans', 'Cairo', sans-serif;
+
+    --radius-cartouche: 999px;   /* the signature shape */
+    --radius-card: 14px;
+    --shadow-card: 0 2px 10px rgba(51, 4, 1, 0.08);
+    --shadow-drawer: -8px 0 30px rgba(51, 4, 1, 0.25);
 }
 
 /* ============ BASE ============ */
@@ -139,21 +147,32 @@ nav a {
 }
 
 .cart-toggle {
+    position: relative;
+    display: grid;
+    place-items: center;
     background: none;
     border: none;
     color: var(--white);
-    text-decoration: none;
-    font-size: .92rem;
+    padding: 8px;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
 #cartCount {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
     background: var(--terracotta);
     color: var(--white);
+    font-size: .7rem;
+    font-weight: 600;
+    line-height: 1;
     border-radius: 999px;
-    padding: 1px 7px;
-    font-size: .75rem;
-    margin-left: 4px;
 }
 
 /* ============ FOOTER ============ */
@@ -214,7 +233,7 @@ footer h3 {
 
 .product-card {
     background: var(--white);
-    border: 1px solid var(--clay);
+    /* border: 1px solid var(--clay); */
     border-radius: 10px;
     padding: 20px 16px;
     text-align: center;
