@@ -76,7 +76,7 @@ cartToggle.addEventListener('click', () => {
 cartOverlay.addEventListener('click', () => {
     cartDrawer.classList.remove('open');
     cartOverlay.classList.remove('open');
-});8
+});
 
 const closeCart = document.getElementById('closeCart');
 closeCart.addEventListener('click', () => {
