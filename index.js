@@ -109,10 +109,20 @@ function renderCart(){
                             <span class="count">${item.qty}</span>
                             <button class="add-btn" data-name="${item.name}" data-img="${item.img}">+</button>
                         </div>
+                        <button class="remove-item" data-name="${item.name}">Remove</button>
                     </div>
                 </div>
             `;
         });
+        const removeBtns = cartBody.querySelectorAll('.remove-item');
+
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                removeFromCart(btn.dataset.name);
+                refreshCartUI();
+            });
+        });
+
         const subBtns = cartBody.querySelectorAll('.sub-btn');
         const addBtns = cartBody.querySelectorAll('.add-btn');
 
@@ -144,5 +154,37 @@ function refreshCartUI() {
 
     renderCart();
 }
+function removeFromCart(name){
+    const cart = getCart();
+    const filteredCart = cart.filter(item => item.name !== name);
+    localStorage.setItem('cart', JSON.stringify(filteredCart));
+}
 
+// testing the translations
+function applyLanguage(lang) {
+    document.querySelectorAll('[data-str]').forEach(el => {
+        const key = el.dataset.str;
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    localStorage.setItem('lang', lang);
+
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) langToggle.textContent = lang === 'ar' ? 'EN' : 'AR';
+}
+
+const langToggle = document.getElementById('langToggle');
+if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        const current = localStorage.getItem('lang') || 'en';
+        const next = current === 'en' ? 'ar' : 'en';
+        applyLanguage(next);
+    });
+}
+applyLanguage(localStorage.getItem('lang') || 'en');
 refreshCartUI();

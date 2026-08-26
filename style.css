@@ -394,6 +394,7 @@ footer h3 {
 }
 
 .drawer-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -437,7 +438,19 @@ footer h3 {
     height: 28px;
     font-size: .95rem;
 }
-
+.remove-item {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--brick);
+    font-size: .78rem;
+    cursor: pointer;
+    padding: 4px 0 0;
+    text-decoration: underline;
+    font-family: inherit;
+}
 /* ============ ACCESSIBILITY ============ */
 :focus-visible {
     outline: 2.5px solid var(--terracotta);
