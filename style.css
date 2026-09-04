@@ -451,6 +451,10 @@ footer h3 {
     text-decoration: underline;
     font-family: inherit;
 }
+[dir="rtl"] .remove-item {
+    right: auto;
+    left: 12px;
+}
 /* ============ ACCESSIBILITY ============ */
 :focus-visible {
     outline: 2.5px solid var(--terracotta);
@@ -460,20 +464,29 @@ footer h3 {
 /* ============ MOBILE ============ */
 @media (max-width: 600px) {
     nav {
-        row-gap: 12px;
+        position: relative;
+        flex-wrap: nowrap;
     }
 
     .brand {
         font-size: 1.1rem;
-        order: 1;
-    }
-
-    .nav-right {
-        order: 2;
     }
 
     .nav-links {
-        order: 3;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 16px 24px;
+        flex-direction: column;
+        gap: 10px;
+        background: var(--mahogany);
+        border-top: 2px solid var(--dark-brick);
+    }
+
+    .nav-links.open {
+        display: flex;
     }
 
     .product-grid {
