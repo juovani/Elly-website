@@ -189,18 +189,100 @@ nav a {
     border-radius: var(--radius-cartouche);
 }
 
-/* ============ FOOTER ============ */
-footer {
-    padding: 24px 15px;
-    background: var(--white);
-    display: flex;
-    justify-content: space-between;
+[dir="rtl"] #cartCount {
+    right: auto;
+    left: 2px;
 }
 
-footer h3 {
-    margin-top: 0;
+/* ============ FOOTER (includes Visit Us) ============ */
+footer {
+    background: var(--mahogany);
+    color: var(--warm-ivory);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    padding: 56px 24px 32px;
+    align-items: start;
+    scroll-margin-top: 80px;
+}
+
+.section-kicker {
+    display: inline-block;
+    color: var(--clay);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+}
+
+.footer-visit h2 {
+    color: var(--warm-ivory);
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.visit-address {
+    color: var(--clay);
+    margin: 0 0 20px;
+}
+
+.map-box {
+    max-width: 100%;
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgba(248, 240, 231, .15);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 280px;
+    display: block;
+    border: 0;
+}
+
+.footer-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-mark {
+    height: 34px;
+    width: auto;
+    opacity: .9;
+}
+
+.footer-brand p {
+    margin: 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
     font-size: 1.05rem;
-    color: var(--brick);
+}
+
+.footer-col h4 {
+    margin: 0 0 12px;
+    font-size: .95rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--clay);
+}
+
+.footer-col p {
+    margin: 0 0 4px;
+    font-size: .92rem;
+    opacity: .9;
 }
 
 .phone-link {
@@ -211,6 +293,30 @@ footer h3 {
 
 .phone-link:hover {
     text-decoration: underline;
+}
+
+.footer-col .phone-link {
+    color: var(--warm-ivory);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .95rem;
+}
+
+.footer-col .phone-link:hover {
+    color: var(--clay);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(248, 240, 231, .15);
+    padding: 16px 24px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: .78rem;
+    opacity: .6;
 }
 
 /* ============ HOME PAGE ============ */
@@ -225,28 +331,6 @@ footer h3 {
 .storefront img {
     max-width: 320px;
     margin: 0 auto;
-}
-
-.location {
-    text-align: center;
-    scroll-margin-top: 80px;
-    border-bottom: 2px solid var(--clay);
-    padding: 40px 24px;
-}
-
-.map-box {
-    max-width: 500px;
-    margin: 20px auto 0;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-}
-
-.map-box iframe {
-    width: 100%;
-    height: 300px;
-    display: block;
-    border: 0;
 }
 
 /* ============ PRODUCTS PAGE ============ */
@@ -438,6 +522,7 @@ footer h3 {
     height: 28px;
     font-size: .95rem;
 }
+
 .remove-item {
     position: absolute;
     bottom: 8px;
@@ -451,10 +536,12 @@ footer h3 {
     text-decoration: underline;
     font-family: inherit;
 }
+
 [dir="rtl"] .remove-item {
     right: auto;
     left: 12px;
 }
+
 /* ============ ACCESSIBILITY ============ */
 :focus-visible {
     outline: 2.5px solid var(--terracotta);
@@ -492,6 +579,23 @@ footer h3 {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-visit h2 {
+        text-align: center;
+    }
+
+    .footer-brand {
+        justify-content: center;
+    }
+
+    .footer-col .phone-link {
+        justify-content: center;
     }
 }
 
