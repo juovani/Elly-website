@@ -25,8 +25,8 @@ if(groceriesGrid){
         const grid = document.getElementById(product.category);
 
         grid.innerHTML += `
-            <div class="product-card">
-                <p class="product-name">${product.name}</p>
+            <div class="product-card" data-id="${product.name}">
+                <p class="product-name" data-en="${product.name}" data-ar="${product.name_ar || product.name}">${product.name}</p>
                 <img src="${product.img}" alt="${product.name}">
                 <div class="buttons">
                     <button class="sub-btn">-</button>
@@ -99,11 +99,15 @@ function renderCart(){
         `;
     } else{
         cart.forEach(item => {
+            const currentLang = localStorage.getItem('lang') || 'en';
+            const product = (typeof products !== 'undefined') ? products.find(p => p.name === item.name) : null;
+            const displayName = (currentLang === 'ar' && product && product.name_ar) ? product.name_ar : item.name;
+
             cartBody.innerHTML += `
                 <div class="drawer-item">
-                    <img src="${item.img}" alt="${item.name}">
+                    <img src="${item.img}" alt="${displayName}">
                     <div class="drawer-item-info">
-                        <p class="drawer-item-name">${item.name}</p>
+                        <p class="drawer-item-name">${displayName}</p>
                         <div class="buttons">
                             <button class="sub-btn" data-name="${item.name}" data-img="${item.img}">-</button>
                             <span class="count">${item.qty}</span>
@@ -147,7 +151,7 @@ function refreshCartUI() {
 
     cards.forEach(card => {
         const countDisplay = card.querySelector('.count');
-        const productName = card.querySelector('.product-name').textContent;
+        const productName = card.dataset.id;
         const existingItem = cart.find(item => item.name === productName);
         countDisplay.textContent = existingItem ? existingItem.qty : 0;
     });
@@ -160,6 +164,13 @@ function removeFromCart(name){
     localStorage.setItem('cart', JSON.stringify(filteredCart));
 }
 
+function updateProductNames(lang) {
+    document.querySelectorAll('.product-name').forEach(el => {
+        const value = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+        if (value) el.textContent = value;
+    });
+}
+
 // testing the translations
 function applyLanguage(lang) {
     document.querySelectorAll('[data-str]').forEach(el => {
@@ -169,9 +180,10 @@ function applyLanguage(lang) {
         }
     });
 
+    updateProductNames(lang);   // ← new line
+
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
     localStorage.setItem('lang', lang);
 
     const langToggle = document.getElementById('langToggle');
