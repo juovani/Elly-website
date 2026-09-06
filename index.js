@@ -198,5 +198,27 @@ if (langToggle) {
         applyLanguage(next);
     });
 }
+const sendOrderBtn = document.getElementById('sendOrderBtn');
+
+if (sendOrderBtn) {
+    sendOrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const cart = getCart();
+        if (cart.length === 0) {
+            alert('Your cart is empty.');
+            return;
+        }
+
+        let message = 'Order from Elly Convenience website:%0A%0A';
+        cart.forEach(item => {
+            message += `${item.qty}x ${item.name}%0A`;
+        });
+
+        const storePhone = '17743812740';
+        window.location.href = `sms:${storePhone}?&body=${message}`;
+    });
+}
+
 applyLanguage(localStorage.getItem('lang') || 'en');
 refreshCartUI();
