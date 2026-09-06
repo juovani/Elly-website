@@ -215,7 +215,7 @@ if (sendOrderBtn) {
             message += `${item.qty}x ${item.name}%0A`;
         });
 
-        const storePhone = '17743812740';
+        const storePhone = '17743405102';
         window.location.href = `sms:${storePhone}?&body=${message}`;
     });
 }
