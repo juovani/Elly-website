@@ -477,6 +477,13 @@ footer {
     font-weight: 600;
 }
 
+.shop_btn{
+    text-align: center;
+    color: var(--mahogany);
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .drawer-item {
     position: relative;
     display: flex;
@@ -543,13 +550,20 @@ footer {
 }
 .cart-footer {
     padding: 16px 18px;
-    border-top: 1px solid var(--clay);
+    /* border-top: 1px solid var(--clay); */
+    background-color: var(--mahogany);
+    display: flex;
+    justify-content: center;
 }
 
 .cart-footer .add-to-cart {
-    display: block;
-    width: 100%;
-    text-align: center;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--warm-ivory);
+    border: 2px solid var(--clay);
+    border-radius: var(--radius-cartouche);
+    cursor: pointer;
 }
 
 /* ============ ACCESSIBILITY ============ */

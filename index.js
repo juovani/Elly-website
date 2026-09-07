@@ -96,6 +96,7 @@ function renderCart(){
     if(cart.length === 0){
         cartBody.innerHTML += `
             <h4>Cart Is Empty</h4>
+            <a href="products.html" class="shop_btn" data-str="nav_shop">Shop for items</a>
         `;
     } else{
         cart.forEach(item => {
@@ -144,6 +145,7 @@ function renderCart(){
             });
         });
     }
+    applyLanguage(localStorage.getItem('lang') || 'en');
 }
 function refreshCartUI() {
     const cart = getCart();
@@ -215,7 +217,7 @@ if (sendOrderBtn) {
             message += `${item.qty}x ${item.name}%0A`;
         });
 
-        const storePhone = '17743405102';
+        const storePhone = 'tempNumber';
         window.location.href = `sms:${storePhone}?&body=${message}`;
     });
 }
