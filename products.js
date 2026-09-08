@@ -4,7 +4,7 @@ const products = [
     { name: "Egypt's Best Rice", img: 'Products/Rise_Egyptian.jpeg', category: 'grid-groceries' },
 
     { name: 'Plain Fava Beans', name_ar: 'فول مدمس سادة', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
-    { name: 'Fava Beans & Chickpeas', name_ar: 'فول مدمس و حمص', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
+    { name: 'Fava Beans and Chickpeas', name_ar: 'فول مدمس و حمص', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
     { name: 'Broad Beans', name_ar: 'باجلا / فول حبة عريضة', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
     { name: 'Fava Beans, Egyptian Spice Mix', name_ar: 'فول بالخلطة المصرية', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
     { name: 'Peeled Fava Beans, Egyptian Spice Mix', name_ar: 'فول مقشور بالخلطة المصرية', brand: 'California Garden', img: 'Products/temp.jpg', category: 'grid-groceries' },
